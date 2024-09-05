@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Payment Details";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <h1>@ViewBag.Title</h1>
+    <p>Total Amount: @ViewBag.TotalAmount</p>
+    <p>Tax Amount: @ViewBag.TaxAmount</p>
+    <p>Net Amount: @ViewBag.NetAmount</p>
+
+    <h2>Tax Details</h2>
+    @if (ViewBag.TaxDetails != null)
+    {
+        <ul>
+            @foreach (var tax in ViewBag.TaxDetails)
+            {
+                <li>Amount: @(tax.amount / 100.0m) USD, Rate: @tax.rate%, Type: @tax.type</li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No tax details available.</p>
+    }
+</body>
+</html>

@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\HP\\source\\repos\\Stripe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BF39E3D5-CCE5-4BAA-B400-89C281E32813}|Stripe\\Stripe.csproj|c:\\users\\hp\\source\\repos\\stripe\\stripe\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BF39E3D5-CCE5-4BAA-B400-89C281E32813}|Stripe\\Stripe.csproj|solutionrelative:stripe\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF39E3D5-CCE5-4BAA-B400-89C281E32813}|Stripe\\Stripe.csproj|C:\\Users\\HP\\source\\repos\\Stripe\\stripe\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF39E3D5-CCE5-4BAA-B400-89C281E32813}|Stripe\\Stripe.csproj|solutionrelative:stripe\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF39E3D5-CCE5-4BAA-B400-89C281E32813}|Stripe\\Stripe.csproj|C:\\Users\\HP\\source\\repos\\Stripe\\stripe\\views\\home\\cancel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BF39E3D5-CCE5-4BAA-B400-89C281E32813}|Stripe\\Stripe.csproj|solutionrelative:stripe\\views\\home\\cancel.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF39E3D5-CCE5-4BAA-B400-89C281E32813}|Stripe\\Stripe.csproj|C:\\Users\\HP\\source\\repos\\Stripe\\stripe\\views\\home\\success.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BF39E3D5-CCE5-4BAA-B400-89C281E32813}|Stripe\\Stripe.csproj|solutionrelative:stripe\\views\\home\\success.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cancel.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Stripe\\Stripe\\Views\\Home\\Cancel.cshtml",
+              "RelativeDocumentMoniker": "Stripe\\Views\\Home\\Cancel.cshtml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Stripe\\Stripe\\Views\\Home\\Cancel.cshtml",
+              "RelativeToolTip": "Stripe\\Views\\Home\\Cancel.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T13:51:49.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Success.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Stripe\\Stripe\\Views\\Home\\Success.cshtml",
+              "RelativeDocumentMoniker": "Stripe\\Views\\Home\\Success.cshtml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Stripe\\Stripe\\Views\\Home\\Success.cshtml",
+              "RelativeToolTip": "Stripe\\Views\\Home\\Success.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T13:51:28.894Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Stripe\\Stripe\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Stripe\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Stripe\\Stripe\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Stripe\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAGwAAAAAAAAAAAAqwHoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-04T06:13:51.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\source\\repos\\Stripe\\Stripe\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Stripe\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\HP\\source\\repos\\Stripe\\Stripe\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Stripe\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAKcAAAAAAAAAAAAswLgAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T05:55:29.891Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

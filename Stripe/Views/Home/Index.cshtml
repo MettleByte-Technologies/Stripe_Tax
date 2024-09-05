@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Stripe Payment</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <h1>Payment</h1>
+
+    <!-- Stripe Checkout Button -->
+    <h2>Checkout with Stripe Checkout</h2>
+    <button id="checkout-button">Checkout</button>
+
+    <!-- Direct Card Payment Form -->
+    <h2>Pay with Card</h2>
+    <form id="payment-form">
+        <div id="card-element">
+            <!-- A Stripe Element will be inserted here. -->
+        </div>
+        <button id="submit">Pay</button>
+        <div id="error-message"></div>
+    </form>
+
+    <h2>Charge Details</h2>
+    <button id="fetch-charge-details">Get Charge Details</button>
+    <div id="charge-details"></div>
+
+    <script>
+        // Stripe Checkout Button
+        var stripeCheckout = Stripe('@ViewBag.StripePublishableKey'); // Your publishable key
+        var checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', function () {
+            fetch('@Url.Action("CreateCheckoutSession", "Home")')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    if (session.error) {
+                        alert('Error: ' + session.error);
+                    } else if (session.id) {
+                        return stripeCheckout.redirectToCheckout({ sessionId: session.id });
+                    } else {
+                        console.error('Session ID not found');
+                        alert('There was an issue with creating a checkout session. Please try again.');
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Error:', error);
+                    alert('Failed to create checkout session. Please check the logs for details.');
+                });
+        });
+
+        // Direct Card Payment Form
+        const stripe = Stripe('@ViewBag.StripePublishableKey'); // Your publishable key
+        const elements = stripe.elements();
+
+        const card = elements.create('card');
+        card.mount('#card-element');
+
+        const form = document.getElementById('payment-form');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            // Create a PaymentIntent
+            const response = await fetch('/Home/CreatePaymentIntent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const { clientSecret, error } = await response.json();
+
+            if (error) {
+                // Show error message
+                document.getElementById('error-message').textContent = `Error: ${error}`;
+                return;
+            }
+
+            // Confirm the card payment
+            const { error: paymentError } = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: 'Customer Name',
+                        address: {
+                            line1: 'Address Line 1',
+                            city: 'City',
+                            state: 'State',
+                            postal_code: 'Postal Code',
+                            country: 'IN' // Country code for India
+                        }
+                    }
+                }
+            });
+
+            if (paymentError) {
+                // Show error message
+                document.getElementById('error-message').textContent = `Payment Error: ${paymentError.message}`;
+            } else {
+                // Payment succeeded
+                document.getElementById('error-message').textContent = 'Payment successful!';
+            }
+        });
+
+        async function getExchangeRate() {
+            // Fetch the exchange rate from a reliable source (e.g., an API)
+            // Here is a placeholder, replace with actual API call
+            const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD'); // Example API
+            const data = await response.json();
+            return data.rates.INR; // Return the INR rate
+        }
+
+        document.getElementById('fetch-charge-details').addEventListener('click', async () => {
+            const paymentIntentResponse = await fetch('/Home/GetLatestPaymentIntentId', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const { paymentIntentId } = await paymentIntentResponse.json();
+            if (!paymentIntentId) {
+                document.getElementById('charge-details').innerHTML = 'No PaymentIntent ID found.';
+                return;
+            }
+
+            const detailsResponse = await fetch(`/Home/ChargeDetails?paymentIntentId=${paymentIntentId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            const details = await detailsResponse.json();
+
+            if (details.error) {
+                document.getElementById('charge-details').innerHTML = `Error: ${details.error}`;
+            } else {
+                const exchangeRate = await getExchangeRate(); // Get the exchange rate
+
+                // Convert all amounts from USD to INR
+                const amountInINR = (details.amount).toFixed(2);
+                const feesInINR = (details.fees).toFixed(2);
+                const taxInINR = (details.tax).toFixed(2);
+                const netAmountInINR = (details.netAmount).toFixed(2);
+
+                document.getElementById('charge-details').innerHTML = `
+                        <p>Amount: ₹${amountInINR}</p>
+                        <p>Currency: INR</p>
+                        <p>Fees: ₹${feesInINR}</p>
+                        <p>Tax: ₹${taxInINR}</p>
+                        <p>Net Amount: ₹${netAmountInINR}</p>
+                    `;
+            }
+        });
+    </script>
+</body>
+</html>
